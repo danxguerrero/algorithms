@@ -168,3 +168,32 @@ const compress = (s) => {
 const intersection = (a, b) => {
     return a.filter(x => b.includes(x))
 }
+
+// five sort
+// Write a function, fiveSort, that takes in an array of numbers as an argument. The function should rearrange elements of the array such that all 5s appear at the end. Your function should perform this operation in-place by mutating the original array. The function should return the array.
+
+// Elements that are not 5 can appear in any order in the output, as long as all 5s are at the end of the array.
+
+function fiveSort(nums) {
+    let left = 0; // Pointer for elements that are not 5
+    let right = nums.length - 1; // Pointer for elements that are 5
+  
+    while (left < right) {
+      // Move left pointer to the first 5
+      while (left < right && nums[left] !== 5) {
+        left++;
+      }
+  
+      // Move right pointer to the first non-5
+      while (left < right && nums[right] === 5) {
+        right--;
+      }
+  
+      // Swap elements if left pointer is pointing to a 5 and right pointer is pointing to a non-5
+      if (left < right) {
+        [nums[left], nums[right]] = [nums[right], nums[left]];
+      }
+    }
+  
+    return nums;
+  }
