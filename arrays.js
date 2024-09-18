@@ -26,11 +26,7 @@ const anagrams = (s1, s2) => {
     }
   
     return true
-  };
-  
-  module.exports = {
-    anagrams,
-  };
+};
 
 // most frequent char
 // Write a function, mostFrequentChar, that takes in a string as an argument. The function should return the most frequent character of the string. If there are ties, return the character that appears earlier in the string.
@@ -57,13 +53,7 @@ const mostFrequentChar = (s) => {
     }
   
     return max
-  };
-  
-  console.log(mostFrequentChar('bookeeper'))
-  
-  module.exports = {
-    mostFrequentChar,
-  };
+};
 
 // pair sum
 // Write a function, pairSum, that takes in an array and a target sum as arguments. The function should return an array containing a pair of indices whose elements sum to the given target. The indices returned must be unique.
@@ -83,6 +73,28 @@ const pairSum = (numbers, targetSum) => {
       }
       
       seenNumbers[numbers[i]] = i
+    }
+    return
+};
+
+// pair product
+// Write a function, pairProduct, that takes in an array and a target product as arguments. The function should return an array containing a pair of indices whose elements multiply to the given target. The indices returned must be unique.
+
+// Be sure to return the indices, not the elements themselves.
+
+// There is guaranteed to be one such pair whose product is the target.
+
+const pairProduct = (numbers, targetProduct) => {
+    const seen = {}
+  
+    for (i=0; i < numbers.length; i++) {
+      compliment = targetProduct / numbers[i]
+  
+      if (seen[compliment] != undefined) {
+        return ([seen[compliment], i]) 
+      } else {
+        seen[numbers[i]] = i
+      }
     }
     return
   };
