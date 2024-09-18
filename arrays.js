@@ -197,3 +197,20 @@ function fiveSort(nums) {
   
     return nums;
   }
+
+  // Q: What is the Big-O time complexity of searching for an item in a set?
+  // A: O(1), Constant Time
+
+  // Q: What is the Big-O time complexity of searching for an element in an array?
+  // A: O(n), Linear Time
+
+  // Q: What is the Big-O time complexity of searching for a key in an object?
+  // A: O(1), Constant Time
+
+  // Q: Given an array of n elements, how many different pairs of elements can be formed in
+  // terms of Big-O?
+  // A: There are O(n^2) possible pairs
+
+  // Q: Given an array of n elements, how many different triplets of elements can be formed in 
+  // terms of Big-O?
+  // A: There are O(n^3) possible triplets
