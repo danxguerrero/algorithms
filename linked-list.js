@@ -44,3 +44,31 @@ const sumList = (head) => {
 
   return sum
 };
+
+// linked list find
+// Write a function, linkedListFind, that takes in the head of a linked list and a target value. The function should return a boolean indicating whether or not the linked list contains the target.
+
+//recursive solution:
+// Time: O(n)
+// Space: O(n)
+const linkedListFind = (head, target) => {
+  if (head === null) return false
+  if (head.val === target) return true
+  return linkedListFind(head.next, target)
+};
+
+//iterative solution:
+// Time: O(n)
+// Space: O(1) 
+const linkedListFind2 = (head, target) => {
+  let current = head
+  
+  while (current !== null) {
+    if (current.val === target) {
+      return true
+    }
+    current = current.next
+  }
+
+  return false
+};
