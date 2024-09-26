@@ -46,7 +46,9 @@ const sumList = (head) => {
 };
 
 // linked list find
-// Write a function, linkedListFind, that takes in the head of a linked list and a target value. The function should return a boolean indicating whether or not the linked list contains the target.
+// Write a function, linkedListFind, that takes in the head of a linked list and a target value. 
+// The function should return a boolean indicating whether or not the linked list contains 
+// the target.
 
 //recursive solution:
 // Time: O(n)
@@ -71,4 +73,36 @@ const linkedListFind2 = (head, target) => {
   }
 
   return false
+};
+
+// get node value
+// Write a function, getNodeValue, that takes in the head of a linked list and an index. 
+// The function should return the value of the linked list at the specified index.
+
+// If there is no node at the given index, then return null.
+
+// recursive solution
+// Time: O(n), linear time
+// Space: O(n), linear time
+const getNodeValue = (head, index) => {
+  if (head === null) return null
+  if (index === 0) return head.val
+  return getNodeValue(head.next, index - 1)
+};
+
+// iterative solution
+// Time: O(n), linear time
+// Space: O(1), constant time
+const getNodeValue2 = (head, index) => {
+  let current = head
+  let i = 0
+  while (i !== index) {
+    current = current.next
+    if (!current) {
+      return null
+    }
+    i++
+  }
+
+  return current.val
 };
