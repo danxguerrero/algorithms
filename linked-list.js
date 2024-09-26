@@ -46,8 +46,9 @@ const sumList = (head) => {
 };
 
 // linked list find
-// Write a function, linkedListFind, that takes in the head of a linked list and a target value. 
-// The function should return a boolean indicating whether or not the linked list contains 
+// Write a function, linkedListFind, that takes in the head of a 
+// linked list and a target value. The function should return 
+// a boolean indicating whether or not the linked list contains
 // the target.
 
 //recursive solution:
@@ -76,8 +77,9 @@ const linkedListFind2 = (head, target) => {
 };
 
 // get node value
-// Write a function, getNodeValue, that takes in the head of a linked list and an index. 
-// The function should return the value of the linked list at the specified index.
+// Write a function, getNodeValue, that takes in the head of a 
+// linked list and an index. The function should return the value
+// of the linked list at the specified index.
 
 // If there is no node at the given index, then return null.
 
@@ -105,4 +107,37 @@ const getNodeValue2 = (head, index) => {
   }
 
   return current.val
+};
+
+// reverse list
+// Write a function, reverseList, that takes in the head of a 
+// linked list as an argument. The function should reverse the 
+// order of the nodes in the linked list in-place and return the 
+// new head of the reversed linked list.
+
+// recursive solution
+// Time: O(n), linear time
+// Space: O(n), linear time
+const reverseList = (head, prev=null) => {
+  if (head == null) return prev
+  const next = head.next
+  head.next = prev
+  return reverseList(next, head)
+};
+
+// iterative solution
+// Time: O(n), linear time
+// Space: O(1), constant time
+const reverseList2 = (head) => {
+  let prev = null
+  let current = head
+  
+  while (current !== null) {
+    const next = current.next
+    current.next = prev
+    prev = current
+    current = next
+  }
+  
+  return prev
 };
