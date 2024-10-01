@@ -55,10 +55,10 @@ const depthFirstValues2 = (root) => {
 
 const breadthFirstValues = (root) => {
   if (root === null) return null;
-  const queue = [];
+  const queue = [ root ];
   const result = [];
 
-  while (root !== null) {
+  while (queue.length > 0) {
     const current = queue.shift();
     result.push(current.val);
     if (current.length !== null) queue.push(current.left);
