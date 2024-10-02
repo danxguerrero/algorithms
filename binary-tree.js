@@ -1,10 +1,10 @@
 class Node {
-    constructor(val) {
-      this.val = val;
-      this.left = null;
-      this.right = null;
-    }
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
   }
+}
 
 // depth first values
 // Write a function, depthFirstValues, that takes in the root of a
@@ -66,4 +66,38 @@ const breadthFirstValues = (root) => {
   }
 
   return result;
-}
+};
+
+// tree sum
+// Write a function, treeSum, that takes in the root of a binary tree 
+// that contains number values. The function should return the total 
+// sum of all values in the tree.
+
+// recursive solution (depth first)
+// Time: O(n), linear time
+// Space: O(n), linear time
+
+const treeSum = (root) => {
+  if (root === null) return 0
+  return root.val + treeSum(root.left) + treeSum(root.right)
+};
+
+// iterative (breadth first)
+// Time: O(n), linear time
+// Space: O(n), linear time
+
+const treeSum2 = (root) => {
+  if (root === null) return 0
+  const queue = [ root ]
+  let sum = 0
+
+  while (queue.length > 0) {
+    const current = queue.shift()
+    sum += current.val
+
+    if (current.left !== null) queue.push(current.left)
+    if (current.right !== null) queue.push(current.right)
+  }
+
+  return sum
+};
