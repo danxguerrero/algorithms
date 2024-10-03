@@ -101,3 +101,38 @@ const treeSum2 = (root) => {
 
   return sum
 };
+
+// tree includes
+// Write a function, treeIncludes, that takes in the root of a 
+// binary tree and a target value. The function should return a 
+// boolean indicating whether or not the value is contained in 
+// the tree.
+
+// recursive solution
+// Time: O(n), linear time
+// Space: O(n), linear time
+
+const treeIncludes = (root, target) => {
+  if (root === null) return false
+  if (root.val === target) return true
+  return treeIncludes(root.left, target) || treeIncludes(root.right, target)
+}
+
+// iterative solution
+// Time: O(n), linear time
+// Space: O(n), linear time
+
+const treeIncludes2 = (root, target) => {
+  if (root === null) return false
+  const queue = [root]
+
+  while (queue.length > 0) {
+    const current = queue.shift()
+    if (current.val === target) return true
+
+    if (current.left) queue.push(current.left)
+    if (current.right) queue.push(current.right)
+  }
+
+  return false
+}
