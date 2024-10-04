@@ -13,7 +13,7 @@ class Node {
 
 // recursive solution
 // Time: O(n), linear time
-// Space: Worst case, unbalanced tree -O(n), linear time, 
+// Space: Worst case, unbalanced tree - O(n), linear time, 
 //        Best Case, balanced tree - O(log n), logarithmic time
 const depthFirstValues = (root) => {
     if (root === null) return [];
@@ -136,3 +136,59 @@ const treeIncludes2 = (root, target) => {
 
   return false
 }
+
+// tree min value
+// Write a function, treeMinValue, that takes in the root of a 
+// binary tree that contains number values. The function should 
+// return the minimum value within the tree.
+
+// You may assume that the input tree is non-empty.
+
+// recursive solution
+// Time: O(n), linear time
+// Space: O(n), linear time
+const treeMinValue = (root) => {
+  if (root === null) return Infinity
+  const leftMin = treeMinValue(root.left)
+  const rightMin = treeMinValue(root.right)
+  return Math.min(root.val, leftMin, rightMin)
+};
+
+// iterative solutions
+
+// depth first
+// Time: O(n), linear time
+// Space: O(n), linear time
+const treeMinValue2 = (root) => {
+  const stack = [root]
+  let min = Infinity
+
+  while (stack.length > 0) {
+    const current = stack.pop()
+    if (current.val < min) min = current.val
+
+    if (current.left !== null) stack.push(current.left)
+    if (current.right !== null) stack.push(current.right)
+  }
+
+  return min
+};
+
+// breadth first
+// Time: O(n^2), linear time (because of the Array.shift method)
+// Spave: O(n), linear time
+
+const treeMinValue3 = (root) => {
+  const queue = [root]
+  let min = Infinity
+
+  while (queue.length > 0) {
+    const current = queue.shift()
+    if (current.val < min) min = current.val
+
+    if (current.left !== null) queue.push(current.left)
+    if (current.right !== null) queue.push(current.right)
+  }
+
+  return min
+};
