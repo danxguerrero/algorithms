@@ -7,7 +7,7 @@
 // destination nodes.
 
 // recursive solution
-// Time: O(n +edges), linear time 
+// Time: O(n + edges), linear time 
 // Space: O(n), linear time
 
 const hasPath = (graph, src, dst) => {
@@ -39,4 +39,48 @@ const hasPath = (graph, src, dst) => {
      }
    
      return false
-   };
+};
+
+// undirected path
+// Write a function, undirectedPath, that takes in an array 
+// of edges for an undirected graph and two nodes (nodeA, nodeB). 
+// The function should return a boolean indicating whether or not
+// there exists a path between nodeA and nodeB.
+
+// recursive solution
+// Time: O(edges), linear time
+// Space: O(n), linear time
+
+const undirectedPath = (edges, nodeA, nodeB) => {
+    const graph = buildgraph(edges)
+    return hasPath3(graph, nodeA, nodeB, new Set())
+  };
+  
+  const hasPath3 = (graph, src, dst, visited) => {
+    if (visited.has(src)) return false
+    if (src === dst) return true
+  
+    visited.add(src)
+  
+    for (let neighbor of graph[src]) {
+      if (hasPath3(graph, neighbor, dst, visited) === true) {
+        return true
+      }
+    }
+  
+    return false
+  }
+  
+  const buildgraph = (edges) => {
+    const graph = {}
+  
+    for (let edge of edges) {
+      const [a,b] = edge
+      if (!(a in graph)) graph[a] = []
+      if (!(b in graph)) graph[b] = []
+      graph[a].push(b)
+      graph[b].push(a)
+    }
+    
+    return graph
+  }
