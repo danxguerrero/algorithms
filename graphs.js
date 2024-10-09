@@ -54,9 +54,9 @@ const hasPath = (graph, src, dst) => {
 const undirectedPath = (edges, nodeA, nodeB) => {
     const graph = buildgraph(edges)
     return hasPath3(graph, nodeA, nodeB, new Set())
-  };
+};
   
-  const hasPath3 = (graph, src, dst, visited) => {
+const hasPath3 = (graph, src, dst, visited) => {
     if (visited.has(src)) return false
     if (src === dst) return true
   
@@ -69,9 +69,9 @@ const undirectedPath = (edges, nodeA, nodeB) => {
     }
   
     return false
-  }
+}
   
-  const buildgraph = (edges) => {
+const buildgraph = (edges) => {
     const graph = {}
   
     for (let edge of edges) {
@@ -83,4 +83,38 @@ const undirectedPath = (edges, nodeA, nodeB) => {
     }
     
     return graph
-  }
+}
+
+// connected components count
+// Write a function, connectedComponentsCount, that takes in the 
+// adjacency list of an undirected graph. The function should 
+// return the number of connected components within the graph.
+
+// recursive solution:
+// Time: O(e), linear time
+// Space: O(n), linear time
+
+const connectedComponentsCount = (graph) => {
+    if (graph == {}) return 0
+    const visited = new Set()
+    let count = 0
+  
+    for (let node in graph) {
+  
+      if(explore(graph, node, visited) === true) count++
+      
+    }
+  
+    return count
+};
+  
+const explore = (graph, current, visited) => {
+    if (visited.has(String(current))) return false
+    visited.add(String(current))
+    
+    for (let neighbor of graph[current]) {
+      explore(graph, neighbor, visited)
+    }
+  
+    return true
+}
