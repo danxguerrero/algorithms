@@ -379,7 +379,7 @@ var majorityElement = function(nums) {
   }
 };
 
-var majorityElement = function(nums) {
+var majorityElement2 = function(nums) {
   if (nums.length === 1) return nums[0]
   const target = nums.length / 2
   let count = 1
