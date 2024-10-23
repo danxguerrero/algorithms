@@ -118,3 +118,57 @@ var isPalindrome = function (s) {
 var isAlphanumeric = function (char) {
     return /[a-z0-9]/.test(char);
 }
+
+// 242. Valid Anagram
+// Given two strings s and t, return true if t is an 
+// anagram
+//  of s, and false otherwise.
+
+ 
+
+// Example 1:
+
+// Input: s = "anagram", t = "nagaram"
+
+// Output: true
+
+// Example 2:
+
+// Input: s = "rat", t = "car"
+
+// Output: false
+
+ 
+
+// Constraints:
+
+// 1 <= s.length, t.length <= 5 * 104
+// s and t consist of lowercase English letters.
+
+var isAnagram = function(s, t) {
+    if (s.length !== t.length) return false;
+
+    const map = {};
+
+    for (i = 0; i < t.length; i++) {
+        const letter = t[i];
+        if (letter in map) {
+            map[letter] += 1;
+        } else {
+            map[letter] = 1;
+        }
+    }
+
+    for (i = 0; i < s.length; i++) {
+        const letter = s[i]
+        if (!letter in map) return false
+
+        if (map[letter] > 0) {
+            map[letter]--
+        } else {
+            return false
+        }
+    }
+
+    return true
+};
