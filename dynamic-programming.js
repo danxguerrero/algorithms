@@ -51,21 +51,31 @@ const tribonacci = (n, memo={}) => {
 
 // You may assume that the target amount is non-negative.
 
-// Time: O(a*n) where a is amount and n is amount of nums.length
+// Time: O(a*n) where a is amount and n is amount of numbers.length
 // Space: O(a)
 
 const sumPossible = (amount, numbers, memo={}) => {
+  // If amount is in memo, return that value (either true or false)
   if (amount in memo) return memo[amount];
+
+  // If amount is negative, return false
   if (amount < 0) return false;
+
+  // If amount is zero, return true (base case)
   if (amount === 0) return true;
 
+  // Iterate through numbers
   for (let num of numbers) {
+    // Check if sumPossible is true for amount - num
     if (sumPossible(amount - num, numbers, memo) === true) {
+      // store result for amount in memo
       memo[amount] = true;
       return true;
     }
   }
 
+  // store result for amount in memo
   memo[amount] = false;
   return false;
 };
+
