@@ -51,7 +51,7 @@ const tribonacci = (n, memo={}) => {
 
 // You may assume that the target amount is non-negative.
 
-// Time: O(a*n) where a is amount and n is 
+// Time: O(a*n) where a is amount and n is amount of nums.length
 // Space: O(a)
 
 const sumPossible = (amount, numbers, memo={}) => {
