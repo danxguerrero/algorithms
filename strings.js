@@ -277,3 +277,54 @@ const expandAroundCenter = (s,left,right) => {
 
     return s.slice(left + 1, right);
 }
+
+// 383. Ransom Note
+// Given two strings ransomNote and magazine, return true if ransomNote can be constructed by using the letters from magazine and false otherwise.
+
+// Each letter in magazine can only be used once in ransomNote.
+
+ 
+
+// Example 1:
+
+// Input: ransomNote = "a", magazine = "b"
+// Output: false
+// Example 2:
+
+// Input: ransomNote = "aa", magazine = "ab"
+// Output: false
+// Example 3:
+
+// Input: ransomNote = "aa", magazine = "aab"
+// Output: true
+ 
+
+// Constraints:
+
+// 1 <= ransomNote.length, magazine.length <= 105
+// ransomNote and magazine consist of lowercase English letters.
+
+var canConstruct = function(ransomNote, magazine) {
+    const map = {};
+
+    for (let i = 0; i < magazine.length; i++) {
+        const letter = magazine[i];
+        if (map[letter] === undefined) {
+            map[letter] = 1;
+        } else {
+            map[letter]++;
+        }
+    }
+
+    for (let i = 0; i < ransomNote.length; i++) {
+        const letter = ransomNote[i];
+        if (letter in map === false) return false;
+        if (map[letter] === 0) {
+            return false;
+        } else {
+            map[letter] -= 1; 
+        }
+    }
+
+    return true;
+};
