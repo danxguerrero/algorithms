@@ -247,3 +247,54 @@ var invertTree = function(root) {
 
   return root
 };
+
+// 110. Balanced Binary Tree
+
+// Given a binary tree, determine if it is 
+// height-balanced
+
+// Example 1:
+// Input: root = [3,9,20,null,null,15,7]
+// Output: true
+
+// Example 2:
+// Input: root = [1,2,2,3,3,null,null,4,4]
+// Output: false
+
+// Example 3:
+// Input: root = []
+// Output: true
+ 
+// Constraints:
+
+// The number of nodes in the tree is in the range [0, 5000].
+// -104 <= Node.val <= 104
+
+var isBalanced = function(root) {
+  if (!root) return true;
+
+  const stack = [];
+  heights = new Map();
+  stack.push([root, false]);
+
+  while (stack.length > 0) {
+      const [node, processed] = stack.pop();
+
+      if (processed) {
+          const leftHeight = heights.get(node.left) || 0;
+          const rightHeight = heights.get(node.right) || 0;
+
+          if (Math.abs(leftHeight - rightHeight) > 1) return false;
+
+          heights.set(node, Math.max(leftHeight, rightHeight) + 1);
+      } else {
+
+          stack.push([node,true]);        
+
+          if (node.right) stack.push([node.right, false]);
+          if (node.left) stack.push([node.left, false]);
+      }
+  }
+
+  return true;
+};
